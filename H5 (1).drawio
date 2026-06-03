@@ -1,0 +1,159 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1294" dy="726" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-0" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;horizontal=1;startSize=30;fillColor=#f5f5f5;strokeColor=#666666;html=1;fontColor=#333333;" value="&lt;b&gt;USUARIO&lt;/b&gt;" vertex="1">
+          <mxGeometry height="1280" width="220" x="310" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-1" parent="4LqsQQUO-a-DBLiquB-p-0" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e13;fontStyle=1;" value="Inicio" vertex="1">
+          <mxGeometry height="50" width="100" x="60" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-2" parent="4LqsQQUO-a-DBLiquB-p-0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;html=1;" value="Ingresa Contraseña&#xa;&amp; Confirmación" vertex="1">
+          <mxGeometry height="60" width="140" x="40" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-3" parent="4LqsQQUO-a-DBLiquB-p-0" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#e0f7fa;strokeColor=#00acc1;html=1;fontColor=#006064;" value="&lt;b&gt;Mensaje de Error&lt;/b&gt;&lt;br&gt;Visualiza validación fallida en pantalla" vertex="1">
+          <mxGeometry height="80" width="140" x="40" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-4" parent="4LqsQQUO-a-DBLiquB-p-0" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e13;fontStyle=1;" value="Fin: Registro&#xa;Exitoso" vertex="1">
+          <mxGeometry height="50" width="100" x="60" y="1160" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-5" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;horizontal=1;startSize=30;fillColor=#f5f5f5;strokeColor=#666666;html=1;fontColor=#333333;" value="&lt;b&gt;FRONTEND&lt;/b&gt;" vertex="1">
+          <mxGeometry height="1280" width="260" x="530" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-6" parent="4LqsQQUO-a-DBLiquB-p-5" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;html=1;" value="¿Longitud &gt;= 8?&#xa;(RN-01)" vertex="1">
+          <mxGeometry height="80" width="140" x="60" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-7" parent="4LqsQQUO-a-DBLiquB-p-5" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;html=1;" value="¿Mayúscula,&#xa;Minúscula y Número?&#xa;(RN-02, 03, 04)" vertex="1">
+          <mxGeometry height="90" width="140" x="60" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-8" parent="4LqsQQUO-a-DBLiquB-p-5" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;html=1;" value="¿Coincide con&#xa;Confirmación?&#xa;(RN-05)" vertex="1">
+          <mxGeometry height="80" width="140" x="60" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-9" parent="4LqsQQUO-a-DBLiquB-p-5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;html=1;" value="Preparar Mensaje&#xa;de Error" vertex="1">
+          <mxGeometry height="60" width="140" x="60" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-10" parent="4LqsQQUO-a-DBLiquB-p-5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;html=1;" value="Enviar Datos de&#xa;Registro de Forma&#xa;Segura (HTTPS)" vertex="1">
+          <mxGeometry height="60" width="140" x="60" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-11" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;horizontal=1;startSize=30;fillColor=#f5f5f5;strokeColor=#666666;html=1;fontColor=#333333;" value="&lt;b&gt;BACKEND&lt;/b&gt;" vertex="1">
+          <mxGeometry height="1280" width="260" x="790" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-12" parent="4LqsQQUO-a-DBLiquB-p-11" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;html=1;" value="¿Re-validación&#xa;Backend Exitosa?&#xa;(RN-06)" vertex="1">
+          <mxGeometry height="80" width="140" x="60" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-13" parent="4LqsQQUO-a-DBLiquB-p-11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;html=1;" value="Cifrar Contraseña&#xa;con Hash Seguro&#xa;(RN-08)" vertex="1">
+          <mxGeometry height="60" width="140" x="60" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-14" parent="4LqsQQUO-a-DBLiquB-p-11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;html=1;" value="Intentar Persistir&#xa;en Base de Datos" vertex="1">
+          <mxGeometry height="60" width="140" x="60" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-15" parent="4LqsQQUO-a-DBLiquB-p-11" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;html=1;" value="¿Persistencia&#xa;Exitosa?" vertex="1">
+          <mxGeometry height="80" width="140" x="60" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-16" parent="4LqsQQUO-a-DBLiquB-p-11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;html=1;" value="Manejar Excepción&#xa;y Generar Error&#xa;Técnico" vertex="1">
+          <mxGeometry height="60" width="140" x="60" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-17" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;horizontal=1;startSize=30;fillColor=#f5f5f5;strokeColor=#666666;html=1;fontColor=#333333;" value="&lt;b&gt;BASE DE DATOS&lt;/b&gt;" vertex="1">
+          <mxGeometry height="1280" width="220" x="1050" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-18" parent="4LqsQQUO-a-DBLiquB-p-17" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;html=1;fontColor=#4c0099;" value="Almacenar Registro&#xa;(No texto plano)&#xa;(RN-07)" vertex="1">
+          <mxGeometry height="80" width="140" x="40" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-19" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" target="4LqsQQUO-a-DBLiquB-p-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-20" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" target="4LqsQQUO-a-DBLiquB-p-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-21" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;labelBackgroundColor=#ffffff;" target="4LqsQQUO-a-DBLiquB-p-7" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-22" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;labelBackgroundColor=#ffffff;" target="4LqsQQUO-a-DBLiquB-p-9" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="330" />
+              <mxPoint x="760" y="680" />
+            </Array>
+            <mxPoint x="600" y="370" as="sourcePoint" />
+            <mxPoint x="600" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-23" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;labelBackgroundColor=#ffffff;" target="4LqsQQUO-a-DBLiquB-p-8" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-24" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;labelBackgroundColor=#ffffff;" target="4LqsQQUO-a-DBLiquB-p-9" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="445" />
+              <mxPoint x="740" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-25" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;labelBackgroundColor=#ffffff;" target="4LqsQQUO-a-DBLiquB-p-10" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-26" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;labelBackgroundColor=#ffffff;" target="4LqsQQUO-a-DBLiquB-p-9" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-27" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" target="4LqsQQUO-a-DBLiquB-p-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-28" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" target="4LqsQQUO-a-DBLiquB-p-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="600" />
+              <mxPoint x="410" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-29" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" target="4LqsQQUO-a-DBLiquB-p-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-30" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;labelBackgroundColor=#ffffff;" target="4LqsQQUO-a-DBLiquB-p-13" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-31" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;labelBackgroundColor=#ffffff;" target="4LqsQQUO-a-DBLiquB-p-16" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020" y="790" />
+              <mxPoint x="1020" y="1230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-32" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" target="4LqsQQUO-a-DBLiquB-p-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-33" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" target="4LqsQQUO-a-DBLiquB-p-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-34" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-18" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" target="4LqsQQUO-a-DBLiquB-p-15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1180" y="1120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-35" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;labelBackgroundColor=#ffffff;" target="4LqsQQUO-a-DBLiquB-p-4" value="Sí">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="920" y="1345" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-36" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;labelBackgroundColor=#ffffff;" target="4LqsQQUO-a-DBLiquB-p-16" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4LqsQQUO-a-DBLiquB-p-37" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4LqsQQUO-a-DBLiquB-p-16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" target="4LqsQQUO-a-DBLiquB-p-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="920" y="1280" />
+              <mxPoint x="660" y="1280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
