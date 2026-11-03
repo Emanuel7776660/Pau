@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Robot App</title>
-    <!-- Tipografía Orbitron y Rajdhani para un look robótico/futurista -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -25,7 +24,6 @@
             position: relative;
         }
 
-            /* Fondo con rejilla cibernética sutil */
             body::before {
                 content: "";
                 position: absolute;
@@ -45,11 +43,9 @@
             width: 100%;
             max-width: 440px;
             backdrop-filter: blur(12px);
-            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
         }
 
-            /* Esquinas decorativas robóticas */
             .card::after {
                 content: "";
                 position: absolute;
@@ -60,18 +56,6 @@
                 border-top: 2px solid #00f3ff;
                 border-right: 2px solid #00f3ff;
             }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-25px) scale(0.98);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
 
         h2 {
             text-align: center;
@@ -155,8 +139,32 @@
                 box-shadow: 0 0 30px rgba(0, 243, 255, 0.7);
             }
 
-            button:active {
-                transform: translateY(0);
+        .btn-secondary {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 12px;
+            background: transparent;
+            color: #00f3ff;
+            border: 1px solid rgba(0, 243, 255, 0.4);
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+            .btn-secondary:hover {
+                background: rgba(0, 243, 255, 0.1);
+                color: #33f6ff;
+                border-color: #00f3ff;
+                box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+                transform: translateY(-2px);
             }
 
         #mensaje {
@@ -204,6 +212,8 @@
             <button type="submit">Iniciar Sesión</button>
         </form>
 
+        <a href="/index.html" class="btn-secondary">⬅ Volver al Home</a>
+
         <div class="link-registro">
             <p>¿No tienes una unidad? <a href="/registro.html">Regístrate aquí</a></p>
         </div>
@@ -229,9 +239,7 @@
             try {
                 const response = await fetch('/api/login', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(credenciales)
                 });
 
@@ -241,11 +249,13 @@
                     mensaje.style.color = '#00ff66';
                     mensaje.textContent = `🎉 ¡Bienvenido, ${resultado.usuario.nombreUsuario}! Acceso concedido.`;
 
-                    // Opcional: Guardar los datos del usuario en el navegador
+                    // Guardar datos en el navegador
                     localStorage.setItem('usuarioLogueado', JSON.stringify(resultado.usuario));
 
-                    // Aquí puedes redirigir a otra página si lo deseas, ej:
-                    // setTimeout(() => { window.location.href = '/dashboard.html'; }, 1500);
+                    // Redirigir al Home principal tras 1.5 segundos
+                    setTimeout(() => {
+                        window.location.href = '/index.html';
+                    }, 1500);
                 } else {
                     mensaje.style.color = '#ff3366';
                     mensaje.textContent = '⚠️ ' + (resultado.detail || 'Credenciales incorrectas');
@@ -257,6 +267,5 @@
             }
         });
     </script>
-
 </body>
 </html>

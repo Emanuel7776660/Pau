@@ -1,2 +1,4 @@
 wwwroot\login.html
 wwwroot\Registro.html
+wwwroot\usuarios.html
+wwwroot\index.html

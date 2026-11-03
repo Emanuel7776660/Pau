@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Cuenta - Robot App</title>
-    <!-- Tipografía Orbitron y Rajdhani para un look robótico/futurista -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -25,7 +24,6 @@
             position: relative;
         }
 
-            /* Fondo con rejilla cibernética sutil */
             body::before {
                 content: "";
                 position: absolute;
@@ -45,11 +43,9 @@
             width: 100%;
             max-width: 440px;
             backdrop-filter: blur(12px);
-            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
         }
 
-            /* Esquinas decorativas robóticas */
             .card::after {
                 content: "";
                 position: absolute;
@@ -60,18 +56,6 @@
                 border-top: 2px solid #00f3ff;
                 border-right: 2px solid #00f3ff;
             }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-25px) scale(0.98);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
 
         h2 {
             text-align: center;
@@ -155,11 +139,6 @@
                 box-shadow: 0 0 30px rgba(0, 243, 255, 0.7);
             }
 
-            button:active {
-                transform: translateY(0);
-            }
-
-        /* Estilo corregido para el botón secundario tipo enlace */
         .btn-secondary {
             display: block;
             width: 100%;
@@ -186,10 +165,6 @@
                 border-color: #00f3ff;
                 box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
                 transform: translateY(-2px);
-            }
-
-            .btn-secondary:active {
-                transform: translateY(0);
             }
 
         #mensaje {
@@ -232,8 +207,8 @@
             <button type="submit">Conectar Unidad</button>
         </form>
 
-        <!-- Botón para ir al Login -->
         <a href="/login.html" class="btn-secondary">Iniciar Sesión</a>
+        <a href="/index.html" class="btn-secondary" style="margin-top: 8px;">⬅ Volver al Home</a>
 
         <p id="mensaje"></p>
     </div>
@@ -242,7 +217,6 @@
         const form = document.getElementById('formRegistro');
         const mensaje = document.getElementById('mensaje');
 
-        // Función para generar un ID automático aleatorio (ej. USR-48f9a)
         function generarIdUnico() {
             const randomString = Math.random().toString(36).substring(2, 8);
             return `USR-${randomString}`;
@@ -254,14 +228,12 @@
             const password = document.getElementById('PasswordUsuario').value;
             const confirmPassword = document.getElementById('ConfirmPassword').value;
 
-            // Validación de contraseñas iguales
             if (password !== confirmPassword) {
                 mensaje.style.color = '#ff3366';
                 mensaje.textContent = '❌ Error crítico: Las secuencias de claves no coinciden.';
                 return;
             }
 
-            // Construir el objeto usuario con ID automático
             const usuario = {
                 IdUsuarios: generarIdUnico(),
                 NickUsuario: document.getElementById('NickUsuario').value,
@@ -275,9 +247,7 @@
             try {
                 const response = await fetch('/api/usuarios', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(usuario)
                 });
 
@@ -288,7 +258,6 @@
                     mensaje.textContent = '🎉 ¡Unidad registrada con éxito! Redirigiendo al login...';
                     form.reset();
 
-                    // Opcional: Redirigir automáticamente al login después de 2 segundos
                     setTimeout(() => {
                         window.location.href = '/login.html';
                     }, 2000);
@@ -303,6 +272,5 @@
             }
         });
     </script>
-
 </body>
 </html>

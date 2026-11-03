@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar CORS para permitir peticiones desde cualquier origen (ideal para desarrollo)
+// Configurar CORS para permitir peticiones desde cualquier origen
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirTodo", policy =>
@@ -17,19 +17,23 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Habilitar archivos estáticos (para que cargue wwwroot/registro.html)
+// Habilitar archivos estáticos para que cargue wwwroot/index.html, login.html, etc.
 app.UseStaticFiles();
 
 app.UseCors("PermitirTodo");
 
-// Ruta raíz de bienvenida
-app.MapGet("/", () => "API conectada a SQL Server lista para usar.");
+// Ruta raíz que redirige automáticamente al Home (index.html)
+app.MapGet("/", async context =>
+{
+    context.Response.Redirect("/index.html");
+    await Task.CompletedTask;
+});
 
 // Endpoint para listar usuarios (GET)
 app.MapGet("/api/usuarios", async (IConfiguration configuration) =>
 {
     string connectionString = configuration.GetConnectionString("CadenaSql")
-                                ?? throw new InvalidOperationException("No se encontró la cadena de conexión.");
+                              ?? throw new InvalidOperationException("No se encontró la cadena de conexión.");
 
     var listaUsuarios = new List<Usuario>();
 
@@ -65,7 +69,7 @@ app.MapGet("/api/usuarios", async (IConfiguration configuration) =>
 app.MapPost("/api/usuarios", async (Usuario usuario, IConfiguration configuration) =>
 {
     string connectionString = configuration.GetConnectionString("CadenaSql")
-                                ?? throw new InvalidOperationException("No se encontró la cadena de conexión.");
+                              ?? throw new InvalidOperationException("No se encontró la cadena de conexión.");
 
     try
     {
@@ -94,14 +98,13 @@ app.MapPost("/api/usuarios", async (Usuario usuario, IConfiguration configuratio
 app.MapPost("/api/login", async (Usuario credenciales, IConfiguration configuration) =>
 {
     string connectionString = configuration.GetConnectionString("CadenaSql")
-                                ?? throw new InvalidOperationException("No se encontró la cadena de conexión.");
+                              ?? throw new InvalidOperationException("No se encontró la cadena de conexión.");
 
     try
     {
         using var connection = new SqlConnection(connectionString);
         await connection.OpenAsync();
 
-        // Buscamos al usuario por su Nick o por su Nombre y validamos la contraseña
         string query = "SELECT IdUsuarios, NickUsuario, NombreUsuario, PasswordUsuario FROM Usuarios WHERE (NickUsuario = @Nick OR NombreUsuario = @Nick) AND PasswordUsuario = @Password";
 
         using var command = new SqlCommand(query, connection);
@@ -116,7 +119,7 @@ app.MapPost("/api/login", async (Usuario credenciales, IConfiguration configurat
                 IdUsuarios = reader.GetString(0),
                 NickUsuario = reader.GetString(1),
                 NombreUsuario = reader.GetString(2),
-                PasswordUsuario = "" // Por seguridad no devolvemos la contraseña
+                PasswordUsuario = "" // Por seguridad
             };
 
             return Results.Ok(new { Mensaje = "¡Acceso concedido!", Usuario = usuarioEncontrado });

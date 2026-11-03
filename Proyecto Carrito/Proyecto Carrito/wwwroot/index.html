@@ -1,0 +1,379 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Sistema Robot Central</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        body {
+            background: #030712;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #e2e8f0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+            /* Fondo estilo Hacker / Rejilla cibernética animada */
+            body::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+                background-size: 40px 40px;
+                z-index: -2;
+            }
+
+            /* Efecto de escaneo láser estilo hacker */
+            body::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+                background-size: 100% 4px, 6px 100%;
+                z-index: -1;
+                pointer-events: none;
+            }
+
+        .card {
+            background: rgba(8, 14, 26, 0.9);
+            padding: 45px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 243, 255, 0.4);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.2), inset 0 0 20px rgba(0, 243, 255, 0.08);
+            width: 100%;
+            max-width: 480px;
+            backdrop-filter: blur(15px);
+            text-align: center;
+            position: relative;
+        }
+
+            /* Esquinas tecnológicas robóticas */
+            .card::before, .card::after {
+                content: "";
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                border-color: #00f3ff;
+                border-style: solid;
+                transition: all 0.3s ease;
+            }
+
+            .card::before {
+                top: -2px;
+                left: -2px;
+                border-width: 2px 0 0 2px;
+            }
+
+            .card::after {
+                bottom: -2px;
+                right: -2px;
+                border-width: 0 2px 2px 0;
+            }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.7);
+        }
+
+        .subtitle {
+            color: #00f3ff;
+            font-size: 14px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .status-box {
+            background: rgba(0, 243, 255, 0.05);
+            border: 1px dashed rgba(0, 243, 255, 0.3);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            font-size: 15px;
+            color: #94a3b8;
+            letter-spacing: 1px;
+        }
+
+        .menu-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-robot {
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.15) 0%, rgba(0, 102, 255, 0.25) 100%);
+            color: #00f3ff;
+            border: 1px solid rgba(0, 243, 255, 0.6);
+            padding: 16px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.15);
+        }
+
+            /* Efecto de brillo intenso al posicionarse encima (Hover) */
+            .btn-robot:hover {
+                background: linear-gradient(135deg, #00f3ff 0%, #0066ff 100%);
+                color: #05080f;
+                transform: translateY(-3px);
+                box-shadow: 0 0 35px rgba(0, 243, 255, 0.9), 0 0 15px rgba(0, 243, 255, 0.6);
+                border-color: #00f3ff;
+            }
+
+            .btn-robot.primary {
+                background: linear-gradient(135deg, #00f3ff 0%, #0066ff 100%);
+                color: #05080f;
+                box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+            }
+
+                .btn-robot.primary:hover {
+                    background: linear-gradient(135deg, #33f6ff 0%, #3385ff 100%);
+                    box-shadow: 0 0 40px rgba(0, 243, 255, 1);
+                }
+
+            .btn-robot.salir {
+                border-color: rgba(255, 51, 102, 0.6);
+                color: #ff3366;
+                background: linear-gradient(135deg, rgba(255, 51, 102, 0.1) 0%, rgba(153, 0, 51, 0.2) 100%);
+            }
+
+                .btn-robot.salir:hover {
+                    background: linear-gradient(135deg, #ff3366 0%, #990033 100%);
+                    color: #ffffff;
+                    box-shadow: 0 0 35px rgba(255, 51, 102, 0.9);
+                    border-color: #ff3366;
+                }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* --- VENTANA MODAL DEL PERSONAJE ROBÓTICO DE AYUDA --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+            .modal-overlay.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+        .modal-card {
+            background: rgba(13, 20, 33, 0.95);
+            border: 2px solid #00f3ff;
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.4), inset 0 0 20px rgba(0, 243, 255, 0.1);
+            padding: 35px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 520px;
+            text-align: center;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .robot-avatar {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 15px auto;
+            background: radial-gradient(circle, #00f3ff 0%, #0066ff 70%, #030712 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.8);
+            position: relative;
+            animation: flotarRobot 3s ease-in-out infinite;
+        }
+
+            .robot-avatar::after {
+                content: "🤖";
+                font-size: 45px;
+                filter: drop-shadow(0 0 5px #ffffff);
+            }
+
+        @keyframes flotarRobot {
+            0%, 100% {
+                transform: translateY(0px);
+                box-shadow: 0 0 25px rgba(0, 243, 255, 0.8);
+            }
+
+            50% {
+                transform: translateY(-8px);
+                box-shadow: 0 0 35px rgba(0, 243, 255, 1);
+            }
+        }
+
+        .robot-title {
+            font-family: 'Orbitron', sans-serif;
+            color: #00f3ff;
+            font-size: 20px;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        .robot-dialog {
+            background: rgba(3, 7, 18, 0.8);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 8px;
+            padding: 18px;
+            text-align: left;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+            .robot-dialog p {
+                margin-bottom: 12px;
+            }
+
+                .robot-dialog p:last-child {
+                    margin-bottom: 0;
+                    color: #33f6ff;
+                    font-weight: 600;
+                }
+
+        .btn-cerrar-modal {
+            background: linear-gradient(135deg, #ff3366 0%, #990033 100%);
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.5);
+            transition: all 0.3s ease;
+        }
+
+            .btn-cerrar-modal:hover {
+                background: linear-gradient(135deg, #ff6688 0%, #cc0044 100%);
+                box-shadow: 0 0 25px rgba(255, 51, 102, 0.9);
+                transform: translateY(-2px);
+            }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>SISTEMA ROBOT</h2>
+        <p class="subtitle">&gt;&gt; Núcleo Central de Control &lt;&lt;</p>
+
+        <div class="status-box" id="statusBox">
+            STATUS: <span style="color: #ff3366;">[ ACCESO RESTRINGIDO ]</span>
+        </div>
+
+        <!-- Menú cuando NO ha iniciado sesión -->
+        <div id="menuPublico" class="menu-buttons">
+            <a href="/login.html" class="btn-robot primary">⚡ Acceso de Unidad (Login)</a>
+            <a href="/registro.html" class="btn-robot">🛡️ Inicializar Nueva Unidad</a>
+            <a href="#" onclick="abrirAyuda(event)" class="btn-robot">💡 Ayuda del Sistema</a>
+        </div>
+
+        <!-- Menú cuando SÍ ha iniciado sesión -->
+        <div id="menuPrivado" class="menu-buttons hidden">
+            <a href="/usuarios.html" class="btn-robot primary">📊 Consultar Base de Unidades</a>
+            <a href="#" onclick="abrirAyuda(event)" class="btn-robot">💡 Ayuda del Sistema</a>
+            <a href="#" onclick="cerrarSesion()" class="btn-robot salir">🔴 Desconectar Sesión</a>
+        </div>
+    </div>
+
+    <!-- VENTANA MODAL CON EL PERSONAJE ROBÓTICO DE AYUDA -->
+    <div class="modal-overlay" id="modalAyuda">
+        <div class="modal-card">
+            <div class="robot-avatar"></div>
+            <div class="robot-title">&gt;&gt; ASISTENTE VIRTUAL K-9 &lt;&lt;</div>
+
+            <div class="robot-dialog">
+                <p>⚡ <strong>¡Atención, Operador!</strong> Este sistema opera un <strong>carrito</strong> el cual tomará <strong>fotos 360 en tiempo real</strong> que se almacenarán en la base de datos.</p>
+                <p>🔒 <strong>¡Aviso Importante!</strong> Para poder continuar y operar el sistema, <strong>debe iniciar sesión o crear una cuenta</strong>.</p>
+            </div>
+
+            <button class="btn-cerrar-modal" onclick="cerrarAyuda()">ENTENDIDO</button>
+        </div>
+    </div>
+
+    <script>
+        // Verificar si hay sesión activa en el navegador
+        const usuarioLogueado = localStorage.getItem('usuarioLogueado');
+        const statusBox = document.getElementById('statusBox');
+        const menuPublico = document.getElementById('menuPublico');
+        const menuPrivado = document.getElementById('menuPrivado');
+
+        if (usuarioLogueado) {
+            const userObj = JSON.parse(usuarioLogueado);
+            statusBox.innerHTML = `UNIDAD CONECTADA: <span style="color: #00ff66;">${userObj.nombreUsuario}</span>`;
+            menuPublico.classList.add('hidden');
+            menuPrivado.classList.remove('hidden');
+        }
+
+        // Funciones para abrir y cerrar la ventana de ayuda del robot
+        function abrirAyuda(e) {
+            e.preventDefault();
+            document.getElementById('modalAyuda').classList.add('active');
+        }
+
+        function cerrarAyuda() {
+            document.getElementById('modalAyuda').classList.remove('active');
+        }
+
+        function cerrarSesion() {
+            localStorage.removeItem('usuarioLogueado');
+            alert('⚠️ Desconexión exitosa del núcleo central.');
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>
